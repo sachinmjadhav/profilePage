@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Grid from 'material-ui/Grid';
 import Sidebar from "./Sidebar/Sidebar";
 import Content from './Content/Content';
-import Footer from '../Footer/Footer';
+import { Footer } from '../../components';
 
 
 const styles = (theme) => ({

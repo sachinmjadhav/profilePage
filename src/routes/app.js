@@ -1,14 +1,13 @@
-import { HomePage, Profile } from '../views';
+import { HomePage, Profile, Services, About, Contact } from '../views';
 
 import { Dashboard } from "material-ui-icons";
 
 const appRoutes = [
     {
         id: 1,
-        skipInNavBar: true,
         path: "/home",
         sidebarName: "home",
-        navbarName: "Material Dashboard",
+        navbarName: "Home",
         documentTitle: "Home",
         documentDescription: "Home Description",
         icon: Dashboard,
@@ -26,33 +25,33 @@ const appRoutes = [
     },
     {
         id: 3,
-        path: "/test3",
+        path: "/services",
         sidebarName: "App Test",
-        navbarName: "Test",
+        navbarName: "Services",
         documentTitle: "Test App",
         documentDescription: "Test Description",
         icon: Dashboard,
-        component: HomePage
+        component: Services
     },
     {
         id: 4,
-        path: "/test4",
-        sidebarName: "App Test",
-        navbarName: "Test",
+        path: "/about",
+        sidebarName: "About Us",
+        navbarName: "About Us",
         documentTitle: "Test App",
         documentDescription: "Test Description",
         icon: Dashboard,
-        component: HomePage
+        component: About
     },
     {
         id: 5,
-        path: "/test5",
-        sidebarName: "App Test",
-        navbarName: "Test",
+        path: "/contact",
+        sidebarName: "Contact Us",
+        navbarName: "Contact Us",
         documentTitle: "Test App",
         documentDescription: "Test Description",
         icon: Dashboard,
-        component: HomePage
+        component: Contact
     },
     { id: 6, redirect: true, path: "/", to: "/home", navbarName: "Redirect" }
 ];
