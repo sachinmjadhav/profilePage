@@ -3,26 +3,31 @@ import PropTypes from "prop-types";
 import { AppBar, Toolbar, Hidden, IconButton } from 'material-ui';
 import { Link } from "react-router-dom";
 import { NavbarLinks } from '../../';
+import { withStyles } from 'material-ui/styles';
 import MenuIcon from 'material-ui-icons/Menu';
-import Menu, { MenuItem } from 'material-ui/Menu';
+import ListItemText from 'material-ui/List';
+import Drawer from 'material-ui/Drawer';
 import './NavBar.css';
+
+const styles = theme => ({
+  menuList: {
+      marginLeft: 30
+  }
+});
 
 class NavBar extends Component {
   state = {
-    anchorEl: null
+    top: false
   };
   
-  handleClick = event => {
-    this.setState({ anchorEl: event.currentTarget })
-  };
-  
-  handleClose = () => {
-    this.setState({ anchorEl: null })
+  toggleDrawer = (side, open) => () => {
+    this.setState({
+      [side]: open,
+    });
   };
   
   render() {
-    const { anchorEl } = this.state;
-    const { title } = this.props;
+    const { title, classes } = this.props;
     return (
       <AppBar position="fixed" color="default" className="navbar">
         <Toolbar className='app-navbar-container'>
@@ -38,54 +43,84 @@ class NavBar extends Component {
             <IconButton
               color="inherit"
               aria-label="Menu"
-              aria-owns={anchorEl ? 'simple-menu' : null}
               aria-haspopup="true"
-              onClick={this.handleClick}
+              onClick={this.toggleDrawer('top', true)}
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu"
-              anchorEl={anchorEl}
-              open={Boolean(anchorEl)}
-              onClose={this.handleClose}
-            >
-              <Link to="/">
-                <MenuItem onClick={this.handleClose}>
-                  Home
-                </MenuItem>
-              </Link>
-              <Link to="/profile">
-                <MenuItem onClick={this.handleClose}>
-                  Profile
-                </MenuItem>
-              </Link>
-              <Link to="/services">
-                <MenuItem onClick={this.handleClose}>
-                  Services
-                </MenuItem>
-              </Link>
-              <Link to="/about">
-                <MenuItem onClick={this.handleClose}>
-                  About Us
-                </MenuItem>
-              </Link>
-              <Link to="/contact">
-                <MenuItem onClick={this.handleClose}>
-                  Contact Us
-                </MenuItem>
-              </Link>
-            </Menu>
+            <Drawer anchor="top" open={this.state.top} onClose={this.toggleDrawer('top', false)}>
+              <div
+                tabIndex={0}
+                role="button"
+                onClick={this.toggleDrawer('top', false)}
+                onKeyDown={this.toggleDrawer('top', false)}
+                className={classes.menuList}
+              >
+                  <Link to="/">
+                    <ListItemText>Home</ListItemText>
+                  </Link>
+              </div>
+  
+              <div
+                tabIndex={1}
+                role="button"
+                onClick={this.toggleDrawer('top', false)}
+                onKeyDown={this.toggleDrawer('top', false)}
+                className={classes.menuList}
+              >
+                  <Link to="/profile">
+                      <ListItemText>Profile</ListItemText>
+                  </Link>
+              </div>
+  
+              <div
+                tabIndex={2}
+                role="button"
+                onClick={this.toggleDrawer('top', false)}
+                onKeyDown={this.toggleDrawer('top', false)}
+                className={classes.menuList}
+              >
+                  <Link to="/services">
+                      <ListItemText>Services</ListItemText>
+                  </Link>
+              </div>
+  
+              <div
+                tabIndex={3}
+                role="button"
+                onClick={this.toggleDrawer('top', false)}
+                onKeyDown={this.toggleDrawer('top', false)}
+                className={classes.menuList}
+              >
+                  <Link to="/about">
+                      <ListItemText>About Us</ListItemText>
+                  </Link>
+              </div>
+  
+              <div
+                tabIndex={4}
+                role="button"
+                onClick={this.toggleDrawer('top', false)}
+                onKeyDown={this.toggleDrawer('top', false)}
+                className={classes.menuList}
+              >
+                  <Link to="/contact">
+                      <ListItemText>Contact Us</ListItemText>
+                  </Link>
+              </div>
+              
+            </Drawer>
           </Hidden>
         </Toolbar>
       </AppBar>
     );
   }
-  
 }
+
 NavBar.propTypes = {
   routes: PropTypes.arrayOf(PropTypes.object).isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired
 };
 
-export default NavBar;
+export default withStyles(styles)(NavBar);
