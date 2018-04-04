@@ -4,7 +4,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import blue from 'material-ui/colors/blue';
 import './App.css';
 import appRoutes from "../../routes/app.js";
-import { NavBar } from '../../components'
+import { NavBar } from '../../components';
+import Footer from '../../components/Footer/Footer';
 
 const theme = createMuiTheme({
   palette: {
@@ -36,8 +37,9 @@ class App extends Component {
   render() {
     return (
       <MuiThemeProvider theme={theme}>
-          <NavBar title={"AAVVIS"} routes={appRoutes} />
+        <NavBar title={"AAVVIS"} routes={appRoutes} />
         {switchRoutes}
+        <Footer />
       </MuiThemeProvider>
     );
   }

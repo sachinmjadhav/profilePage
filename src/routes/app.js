@@ -26,10 +26,10 @@ const appRoutes = [
     {
         id: 3,
         path: "/services",
-        sidebarName: "App Test",
+        sidebarName: "Services",
         navbarName: "Services",
-        documentTitle: "Test App",
-        documentDescription: "Test Description",
+        documentTitle: "Services",
+        documentDescription: "Services Provided",
         icon: Dashboard,
         component: Services
     },
@@ -38,8 +38,8 @@ const appRoutes = [
         path: "/about",
         sidebarName: "About Us",
         navbarName: "About Us",
-        documentTitle: "Test App",
-        documentDescription: "Test Description",
+        documentTitle: "About Us",
+        documentDescription: "About Us",
         icon: Dashboard,
         component: About
     },
@@ -48,8 +48,8 @@ const appRoutes = [
         path: "/contact",
         sidebarName: "Contact Us",
         navbarName: "Contact Us",
-        documentTitle: "Test App",
-        documentDescription: "Test Description",
+        documentTitle: "Contact Us",
+        documentDescription: "Contact Us",
         icon: Dashboard,
         component: Contact
     },

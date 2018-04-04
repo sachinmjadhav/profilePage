@@ -6,27 +6,27 @@ import withWidth from 'material-ui/utils/withWidth';
 import './Jumbotron.css'
 
 const styles = theme => ({
-    jumbotronBgImg: {
-        [theme.breakpoints.down('xs')]: {
-            backgroundPosition: '30%',
-        }
+  jumbotronBgImg: {
+    [theme.breakpoints.down('xs')]: {
+      backgroundPosition: '30%',
     }
+  }
 });
 
 function Jumbotron(props) {
-    const { classes, image, children } = props;
-    return (
-        <div style={{ backgroundImage: "url(" + image + ")" }} className={`page-header header-filter ${classes.jumbotronBgImg}`} >
-            {children}
-        </ div>
-    );
+  const { classes, image, children } = props;
+  return (
+    <div style={{ backgroundImage: "url(" + image + ")" }} className={`page-header header-filter ${classes.jumbotronBgImg}`} >
+      {children}
+    </ div>
+  );
 }
 Jumbotron.propTypes = {
-    classes: PropTypes.object.isRequired,
-    image: PropTypes.string.isRequired
+  classes: PropTypes.object.isRequired,
+  image: PropTypes.string.isRequired
 };
 Jumbotron.defaultProps = {
-    children: ''
+  children: ''
 };
 
 export default compose(withStyles(styles), withWidth())(Jumbotron);
